@@ -18,7 +18,7 @@ public class SQLScripts {
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error al establecer la conexión: " + ex.getMessage());
             return null;
         }
     }
@@ -56,7 +56,7 @@ public class SQLScripts {
             printProductInfo(productID);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error al realizar la inserción: " + e.getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ public class SQLScripts {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error al imprimir los valores actuales: " + e.getMessage());
         }
     }
 
@@ -115,7 +115,7 @@ public class SQLScripts {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error al imprimir la información del producto: " + e.getMessage());
         }
     }
 
@@ -141,7 +141,7 @@ public class SQLScripts {
             printCurrentValues();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error al actualizar la cantidad en inventario: " + e.getMessage());
         }
     }
 
@@ -169,9 +169,9 @@ public class SQLScripts {
             printCurrentValues();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error al actualizar el campo " + fieldName
+                    + " para el producto con ID " + productID + ": " + e.getMessage());
         }
     }
 
-    
 }
