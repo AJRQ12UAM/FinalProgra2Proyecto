@@ -21,11 +21,10 @@ public class UsersDB {
         }
     }
 
-    public static void insertUser(String userID, String userName, String userLastName, String userEmail,
-            String userType, String userAddress, String userTelephone, String userPassword) {
+    public static void insertUser(String userID, String userName, String userLastName, String userEmail, String userType, String userAddress, String userTelephone, String userPassword, String alreadyLogged) {
         try ( Connection connection = getConexion();  PreparedStatement preparedStatement = connection.prepareStatement(
                 "INSERT INTO Progra2ProyectoFinal.dbo.Users "
-                + "(userID, userName, userLastName, userEmail, userType, userAddress, userTelephone, userPassword) "
+                + "(userID, userName, userLastName, userEmail, userType, userAddress, userTelephone, userPassword,alreadyLogged) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)")) {
 
             // Set parameters in the prepared statement
@@ -37,6 +36,7 @@ public class UsersDB {
             preparedStatement.setString(6, userAddress);
             preparedStatement.setString(7, userTelephone);
             preparedStatement.setString(8, userPassword);
+            preparedStatement.setString(9, alreadyLogged);
 
             // Execute the insert
             int rowsAffected = preparedStatement.executeUpdate();
@@ -44,6 +44,10 @@ public class UsersDB {
             // Check if rows were inserted successfully
             if (rowsAffected > 0) {
                 System.out.println("Se insertó correctamente el usuario con ID " + userID);
+                
+                //si se crea correctamente crea el carrito vacio, mismo cartID que el userID (simplificara cosas) 
+                Cart.insertCart(userID, userID);
+                
             } else {
                 System.out.println("No se pudo insertar el usuario con ID " + userID);
             }
