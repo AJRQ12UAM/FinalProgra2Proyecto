@@ -37,7 +37,7 @@ public class ProyectoFinalProgra2 {
         //Nuevo, borrar producto, si, no esta en ningun carro
         ProductsDB.deleteProduct(productID);
 
-        //Insert an user en usersDB
+        //Insert an user en usersDB j s
         UsersDB.insertUser("123", "John", "Doe", "john.doe@example.com", "Customer", "123 Main St", "555-1234", "12345", "0");
     }
 }
