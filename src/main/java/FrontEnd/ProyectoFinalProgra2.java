@@ -1,6 +1,6 @@
-package com.mycompany.proyectofinalprogra2;
+package FrontEnd;
 
-import com.mycompany.proyectofinalprogra2.Clases.SQLScripts;
+import AccesoDB.*;
 
 public class ProyectoFinalProgra2 {
 
@@ -18,19 +18,27 @@ public class ProyectoFinalProgra2 {
         String productTax = "12";
 
         // Llama al método performInsert con los valores de ejemplo
-        SQLScripts.performInsert(productID, productName, productPrice, productType, productCategory,
+        ProductsDB.performInsert(productID, productName, productPrice, productType, productCategory,
                 productTrade, productQtyInventory, productQtySale, productOnCar, productTax);
 
         // Llama al método para obtener y mostrar los valores actuales
-        SQLScripts.printCurrentValues();
+        ProductsDB.printCurrentValues();
 
         // Llama al método para obtener y mostrar la información de un producto específico
-        SQLScripts.printProductInfo(productID);
+        ProductsDB.printProductInfo(productID);
         
-        SQLScripts.updateProductQtyInventory(productID, 3);
+        ProductsDB.reduceProductQtyInventoryAndIncreaseQtySale(productID, 3);
         
-        SQLScripts.updateProductField(productID, "productPrice", "2000");
-        SQLScripts.updateProductField(productID, "productOnCar", "1");
+        ProductsDB.updateProductField(productID, "productPrice", "2000");
+        
+        //Este agrega el 1 cuando esta en el carro, entonces bloquea el borrado
+        ProductsDB.updateProductField(productID, "productOnCar", "1");
+       
+        //Nuevo, borrar producto, si, no esta en ningun carro
+        ProductsDB.deleteProduct(productID);
+        
+        //Insert an user en usersDB
+        UsersDB.insertUser("123", "John", "Doe", "john.doe@example.com", "Customer", "123 Main St", "555-1234", "12345");
         
     }
 }

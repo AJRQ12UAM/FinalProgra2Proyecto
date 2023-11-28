@@ -1,4 +1,4 @@
-package com.mycompany.proyectofinalprogra2.Clases;
+package AccesoDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SQLScripts {
+public class ProductsDB {
 
     private static final String URL = "jdbc:sqlserver://LaCompu\\SQLEXPRESS:1433;database=Progra2ProyectoFinal;"
             + "encrypt=true;trustServerCertificate=true";
-    private static final String USER = "alejandro";
+    private static final String USER = "progra2";
     private static final String PASSWORD = "123456";
 
     public static Connection getConexion() {
@@ -119,29 +119,30 @@ public class SQLScripts {
         }
     }
 
-    public static void updateProductQtyInventory(String productID, int newQtyInventory) {
+    public static void reduceProductQtyInventoryAndIncreaseQtySale(String productID, int qtyToSale) {
         try ( Connection connection = getConexion();  PreparedStatement preparedStatement = connection.prepareStatement(
-                "UPDATE Progra2ProyectoFinal.dbo.Products SET productQtyInventory = ? WHERE productID = ?")) {
+                "UPDATE Progra2ProyectoFinal.dbo.Products SET productQtyInventory = productQtyInventory - ?, productQtySale = productQtySale + ? WHERE productID = ?")) {
 
             // Set parameters in the prepared statement
-            preparedStatement.setInt(1, newQtyInventory);
-            preparedStatement.setString(2, productID);
+            preparedStatement.setInt(1, qtyToSale);
+            preparedStatement.setInt(2, qtyToSale);
+            preparedStatement.setString(3, productID);
 
             // Execute the update
             int rowsAffected = preparedStatement.executeUpdate();
 
             // Check if rows were updated successfully
             if (rowsAffected > 0) {
-                System.out.println("Se actualizó correctamente la cantidad en inventario para el producto con ID " + productID);
+                System.out.println("Se redujo correctamente la cantidad en inventario y se incrementó la cantidad de venta para el producto con ID " + productID);
             } else {
-                System.out.println("No se pudo actualizar la cantidad en inventario para el producto con ID " + productID);
+                System.out.println("No se pudo realizar la operación para el producto con ID " + productID);
             }
 
             // Call the method to print current values
             printCurrentValues();
 
         } catch (SQLException e) {
-            System.out.println("Error al actualizar la cantidad en inventario: " + e.getMessage());
+            System.out.println("Error al realizar la operación: " + e.getMessage());
         }
     }
 
@@ -174,4 +175,25 @@ public class SQLScripts {
         }
     }
 
+    public static void deleteProduct(String productID) {
+        try ( Connection connection = getConexion();  PreparedStatement preparedStatement = connection.prepareStatement(
+                "DELETE FROM Progra2ProyectoFinal.dbo.Products WHERE productID = ? AND productOnCar <> 0")) {
+
+            // Set parameters in the prepared statement
+            preparedStatement.setString(1, productID);
+
+            // Execute the delete
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Check if rows were deleted successfully
+            if (rowsAffected > 0) {
+                System.out.println("Se eliminó correctamente el producto con ID " + productID);
+            } else {
+                System.out.println("No se pudo eliminar el producto con ID " + productID + " o no cumple con los criterios");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar el producto: " + e.getMessage());
+        }
+    }
 }
