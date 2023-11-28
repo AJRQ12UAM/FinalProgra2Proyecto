@@ -26,19 +26,18 @@ public class ProyectoFinalProgra2 {
 
         // Llama al método para obtener y mostrar la información de un producto específico
         ProductsDB.printProductInfo(productID);
-        
+
         ProductsDB.reduceProductQtyInventoryAndIncreaseQtySale(productID, 3);
-        
+
         ProductsDB.updateProductField(productID, "productPrice", "2000");
-        
+
         //Este agrega el 1 cuando esta en el carro, entonces bloquea el borrado
         ProductsDB.updateProductField(productID, "productOnCar", "1");
-       
+
         //Nuevo, borrar producto, si, no esta en ningun carro
         ProductsDB.deleteProduct(productID);
-        
+
         //Insert an user en usersDB
-        UsersDB.insertUser("123", "John", "Doe", "john.doe@example.com", "Customer", "123 Main St", "555-1234", "12345");
-        
+        UsersDB.insertUser("123", "John", "Doe", "john.doe@example.com", "Customer", "123 Main St", "555-1234", "12345", "0");
     }
 }
