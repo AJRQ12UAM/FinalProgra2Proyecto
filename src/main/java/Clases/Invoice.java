@@ -1,5 +1,5 @@
 
-package com.mycompany.proyectofinalprogra2.Clases;
+package Clases;
 
 public class Invoice {
     String invoiceID;
