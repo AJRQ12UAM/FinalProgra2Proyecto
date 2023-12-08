@@ -8,12 +8,12 @@ package Presentacion;
  *
  * @author Adriana Barboza
  */
-public class UserMenu extends javax.swing.JFrame {
+public class UserActionsMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form ProductMenu
      */
-    public UserMenu() {
+    public UserActionsMenu() {
         initComponents();
     }
 
@@ -26,30 +26,23 @@ public class UserMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton_ViewProducts = new javax.swing.JButton();
-        jButton_ViewShoppingCart = new javax.swing.JButton();
+        jButton_AddUser = new javax.swing.JButton();
+        jButton_ModifyUser = new javax.swing.JButton();
         jButton_DeleteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton_ViewProducts.setBackground(new java.awt.Color(0, 153, 153));
-        jButton_ViewProducts.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton_ViewProducts.setText("ViewProducts");
-        jButton_ViewProducts.setToolTipText("");
-        jButton_ViewProducts.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ViewProductsActionPerformed(evt);
-            }
-        });
+        jButton_AddUser.setBackground(new java.awt.Color(0, 153, 153));
+        jButton_AddUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton_AddUser.setText("Add User");
 
-        jButton_ViewShoppingCart.setBackground(new java.awt.Color(0, 153, 153));
-        jButton_ViewShoppingCart.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton_ViewShoppingCart.setText("ViewShoppingCart");
-        jButton_ViewShoppingCart.setToolTipText("");
+        jButton_ModifyUser.setBackground(new java.awt.Color(0, 153, 153));
+        jButton_ModifyUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton_ModifyUser.setText("Modify User");
 
         jButton_DeleteUser.setBackground(new java.awt.Color(255, 0, 51));
         jButton_DeleteUser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton_DeleteUser.setText("Close");
+        jButton_DeleteUser.setText("Delete User");
         jButton_DeleteUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_DeleteUserActionPerformed(evt);
@@ -62,25 +55,22 @@ public class UserMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(162, 162, 162)
-                .addComponent(jButton_DeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addComponent(jButton_ViewProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jButton_ViewShoppingCart)
-                .addGap(68, 68, 68))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton_DeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                    .addComponent(jButton_AddUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_ModifyUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_ViewShoppingCart, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_ViewProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
+                .addComponent(jButton_AddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton_ModifyUser, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_DeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,10 +79,6 @@ public class UserMenu extends javax.swing.JFrame {
     private void jButton_DeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_DeleteUserActionPerformed
-
-    private void jButton_ViewProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ViewProductsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_ViewProductsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,28 +97,30 @@ public class UserMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserActionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserActionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserActionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserActionsMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserMenu().setVisible(true);
+                new UserActionsMenu().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_AddUser;
     private javax.swing.JButton jButton_DeleteUser;
-    private javax.swing.JButton jButton_ViewProducts;
-    private javax.swing.JButton jButton_ViewShoppingCart;
+    private javax.swing.JButton jButton_ModifyUser;
     // End of variables declaration//GEN-END:variables
 }
